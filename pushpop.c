@@ -54,9 +54,19 @@ int pop(struct stack *ptr)
         return value;
     }
 }
+int peek(struct stack* ptr,int i){
+    if (ptr->top-i+1<0) 
+    {
+        printf("this is invalid index\n");
+    }
+    else{
+        return ptr->arr[ptr->top-i+1];
+    }
+   
+}
 int main()
 {
-    int x, n, y, choise;
+    int x, n, y, choise,ind;
     struct stack *sp = (struct stack *)malloc(sizeof(struct stack));
     sp->size = 10;
     sp->top = -1;
@@ -69,7 +79,8 @@ int main()
         printf("1.push the value in stack\n");
         printf("2.pop the in stack\n");
         printf("3.print the value\n");
-        printf("4.exit\n");
+        printf("4.peek the value\n");
+        printf("5.exit\n");
         printf("---------------------------------\n");
         printf("what is your choise : ");
         scanf("%d", &choise);
@@ -103,12 +114,20 @@ int main()
             printf("\n");
             break;
         case 4:
-            exit(0);
+        printf("enter the number of you want to be print : ");
+        scanf("%d",&ind);
+        peek(sp,ind);
+         printf("your %d value is %d\n",ind, peek(sp,ind));
+         break;
+           
+        case 5:
+         exit(0);
            break;
-
+         
         default:
         printf("error!!\n");
         }
+        
 
         
     } 
